@@ -1,7 +1,7 @@
 .wrapper {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; // căn theo chiều dọc
+    justify-content: center; // căn theo chìu ngang
     min-width: 100px;
     padding: 9px 16px;
     border-radius: 4px;
@@ -10,10 +10,11 @@
     cursor: pointer;
     background-color: var(--white);
     border: 1px solid transparent;
-    user-select: none;
+    user-select: none; // Ngăn người dùng có thể chọn nội dung bên trong
+    //.wrapper bằng cách sử dụng chuột hoặc bàn phím -> bỏ việc bôi đen được ở nút
 
     + .wrapper {
-        margin-left: 8px;
+        margin-left: 8px; // Nút nào sau nút trước thì cho cách ra
     }
 
     &.disabled {
@@ -22,11 +23,37 @@
     }
 }
 
+// Icon left hoặc right -> Làm cho icon cách item ra
+.icon + .title,
+.title + .icon {
+    margin-left: 8px;
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+// Button types
+.rounded {
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    border-color: rgba(22, 24, 35, 0.12);
+
+    &:hover {
+        border-color: rgba(22, 24, 35, 0.2);
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
 .primary {
     color: var(--white);
     background-color: var(--primary);
+    border-color: var(--primary);
 
     &:hover {
+        border-color: var(--primary);
         background: linear-gradient(
                 0deg,
                 rgba(0, 0, 0, 0.06),
@@ -38,5 +65,29 @@
 
 .outline {
     color: var(--primary);
-    border-color: currentColor;
+    border-color: currentColor; // ăn theo màu color bên trên
+
+    &:hover {
+        border-color: currentColor;
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.text {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// Disabled
+
+// Button sizes
+.small {
+    min-width: 88px;
+    padding: 4px 16px;
+}
+
+.large {
+    padding: 14px 16px;
+    min-width: 140px;
 }
