@@ -11,7 +11,7 @@ function AccountItem() {
             <img
                 className={cx('avatar')}
                 src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/46b6e2b1b855e3b700dfa16198a067fd~c5_100x100.jpeg?x-expires=1699513200&x-signature=CnVbRmPp6RYAL1WorPvIyb70FUo%3D"
-                alt="Hoaa"
+                alt="Tungg"
             />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>

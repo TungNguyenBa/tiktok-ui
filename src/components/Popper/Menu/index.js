@@ -18,6 +18,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     const renderItems = () => {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
+
             return (
                 <MenuItem
                     key={index}
@@ -33,9 +34,13 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             );
         });
     };
+
     return (
         <Tippy
             interactive
+            delay={[0, 700]}
+            offset={[12, 8]} // Điều chỉnh vị trí của Tipy svs mục gốc
+            placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-popper')}>
@@ -43,7 +48,9 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                             <Header
                                 title={current.title}
                                 onBack={() => {
-                                    setHistory((prev) => prev.slice(0, -1));
+                                    setHistory((prev) =>
+                                        prev.slice(0, prev.length - 1),
+                                    );
                                 }}
                                 // Khi 1 mục menu con (có children) được chọn -> sẽ thêm vào history sẽ bao gồm tất cả các mục menu con đã được chọn tại thời điểm đó. Khi hàm onBack được gọi sẽ thực hiện cập nhật 'history' bằng cách loại bỏ đi phần tử cuối mảng -> Quay lại trạng thái trước đó trong lịch sử menu
                             />
